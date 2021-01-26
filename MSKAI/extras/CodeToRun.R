@@ -86,12 +86,12 @@ CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnostic
 
 # To share your results -----
 # To share your results to the sftp server, you will need to have the study-data-site-ndorms.dat file
-# specify the path to that file here (eg "C:/study-data-site-ndorms.dat")
-file.path.private.key<-""   
+# specify the path to that file here (eg "C:/study-data-site-ndorms.dat")  ### (TF) needs to be without the .dat ending
+file.path.private.key<-"D:/OHDSI/MusculoskeletalAEsAfterAIs/MSKAI/study-data-site-ndorms"   
 
 # please run the below without changing the userName or remoteFolder 
 # this will share the diagnosticsExport zip folder in your output folder
 OhdsiSharing::sftpUploadFile(privateKeyFileName = file.path.private.key,
          userName = "study-data-site-ndorms",
          remoteFolder = "AiEstimation/AiEstimationCohortDiagnostics",
-         fileName = file.path(outputFolder, "diagnosticsExport") )
+         fileName = file.path(outputFolder, "diagnosticsExport", "Results_CUIMC.zip") ) ### (TF) needed to append "Results_CUIMC.zip" to file.path
